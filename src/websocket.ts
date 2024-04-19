@@ -18,7 +18,7 @@ const users: IRoomUser[] = [];
 const messages: IMessage[] = [];
 
 io.on("connection", (socket) => {
-  socket.on("select_room", (data) => {
+  socket.on("select_room", (data, callback) => {
     socket.join(data.room);
 
     const userInRoom = users.find(
@@ -34,6 +34,9 @@ io.on("connection", (socket) => {
         socket_id: socket.id,
       });
     }
+
+    const messageRoom = getMessagesRoom(data.room);
+    callback(messageRoom);
   });
 
   socket.on("message", (data) => {
@@ -49,3 +52,8 @@ io.on("connection", (socket) => {
     io.to(data.room).emit("message", message);
   });
 });
+
+function getMessagesRoom(room: string) {
+  const messagesRoom = messages.filter((message) => message.room === room);
+  return messagesRoom;
+}

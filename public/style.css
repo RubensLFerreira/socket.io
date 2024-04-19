@@ -1,7 +1,10 @@
 body {
   outline: none;
   cursor: pointer;
+  background-color: #212529;
+  color: #FFF;
 }
+
 form {
   display: flex;
   flex-direction: row;
@@ -9,6 +12,14 @@ form {
   padding: 5px;
   margin-top: 140px;
   justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30rem;
 }
 
 button {
@@ -50,6 +61,13 @@ input {
 }
 
 .logout {
-  background: rgb(56, 3, 3);
+  background-color: #d3393b;
   cursor: pointer;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.logout:hover {
+  background-color: #e83e41;
+  color: #fff;
 }
